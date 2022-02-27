@@ -104,14 +104,7 @@ void loop() {
           aborts(2);
         }
   
-  
-  //      else { // just drive straight for a little
-  //        MotorR.writeMicroseconds(map(-low_speed, -100, 100, motorLowR, motorHighR));
-  //        MotorL.writeMicroseconds(map(-low_speed, -100, 100, motorLowL, motorHighL));
-  //      }
-        
         else {
-          while(!Serial.available()) {}
           if (Serial.available() > 0) { // if getting a signal from other board
             angleAtMinDist = Serial.read();
             angleAtMinDist = map(angleAtMinDist, 0, 255, 0, 360);
