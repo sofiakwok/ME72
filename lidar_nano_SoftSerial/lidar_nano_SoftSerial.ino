@@ -78,10 +78,8 @@ void loop() {
     byte  quality  = lidar.getCurrentPoint().quality; //quality of the current measurement
 
     if (startBit) {
-      //if (minDistance < 650 && !(angleAtMinDist >= 110 && angleAtMinDist <= 120)) { //can change the threshold in mm, accounts for deadzone
       if (minDistance < 650) {
         angleAtMinDist = map(angleAtMinDist, 0, 360, 0, 255);
-        //mySerial.write(int(map(90, 0, 360, 0, 255))); // DELETE THIS
         mySerial.write(int(angleAtMinDist)); //pass angle to attack to main board
       }
       // a new scan

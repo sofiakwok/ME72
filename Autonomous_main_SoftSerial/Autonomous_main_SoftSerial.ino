@@ -108,9 +108,11 @@ void loop() {
           if (Serial.available() > 0) { // if getting a signal from other board
             angleAtMinDist = Serial.read();
             angleAtMinDist = map(angleAtMinDist, 0, 255, 0, 360);
+            // why +90?
             angleAtMinDist = (angleAtMinDist+90)%360; // to account for rotation of LiDAR      
             
             angles[num_angles%5] = {angleAtMinDist};
+            // why the median?
             angleAtMinDist = QuickMedian<int>::GetMedian(angles, 5);
             num_angles++;
             
